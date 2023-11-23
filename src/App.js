@@ -1,37 +1,25 @@
-import { useState } from "react";
 
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
+import Navbar from "./components/common/Navbar";
+import routes from "./routes";
 
 function App() {
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
-    const submit = () => {
-        console.log('submit');
-        console.log('title', title);
-        console.log('body', body);
-
-    }
-  return (
-    <div className="container">
-        <div className="mb-3">
-            <label className="form-label">Title</label>
-            <input className="form-control" value={title}
-                   onChange={(event) => setTitle(event.target.value)}
-            />
-        </div>
-
-        <div className="mb-3">
-            <label className="form-label">Body</label>
-            <textarea className="form-control" value={body}
-                   onChange={(event) => setBody(event.target.value)}
-            >
-            </textarea>
-        </div>
-
-        <button className="btn btn-primary" onClick={submit}>
-            Post
-        </button>
-    </div>
-  );
+    return (
+        <Router>
+            <Navbar/>
+            <div className="container">
+                <Switch>
+                    {
+                        routes.map((item) => {
+                            return (
+                                <Route key={item.path} path={item.path} component={item.component} exact></Route>
+                            )
+                        })
+                    }
+                </Switch>
+            </div>
+        </Router>
+    );
 }
-
 export default App;
