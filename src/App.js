@@ -8,7 +8,7 @@ function App() {
     return (
         <Router>
             <Navbar/>
-            <div className="container">
+            <div className="container mt-5">
                 <Switch>
                     {
                         routes.map((item) => {

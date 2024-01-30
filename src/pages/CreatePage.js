@@ -2,7 +2,7 @@ import BlogForm from "../components/BlogForm";
 
 const CreatePage = () => {
     return (
-        <BlogForm></BlogForm>
+        <BlogForm editing={false}></BlogForm>
     )
 }
 
